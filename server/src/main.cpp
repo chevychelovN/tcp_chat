@@ -16,23 +16,23 @@ static void init_log() {
     boost::log::add_common_attributes();
 }
 int main(int argc, char* argv[]) {
-    int res = 1;
     init_log();
-    if (res != 0) {
-        BOOST_LOG_TRIVIAL(warning) << "Some tests failed!";
-    }
     try
     {
         if(argc == 2) {
             Server server;
             server.run(std::stoi(argv[1]));
+        } else if (argc > 2) {
+            BOOST_LOG_TRIVIAL(fatal) << "Invalid starting parameters!";
+            throw std::invalid_argument("ERROR: <INCORRECT PARAMETERS NUMBER>");
         } else {
             Server server;
+            BOOST_LOG_TRIVIAL(warning) << "Server running on default port";
             server.run();
         }
     } catch (std::exception& error) {
         std::cerr <<error.what() << "\n";
         return 1;
     }
-
+    return 0;
 }

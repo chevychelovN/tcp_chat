@@ -17,7 +17,7 @@ struct Client {
 };
 
 
-class Server final {
+class Server {
 public:
     Server() = default;
     ~Server() = default;

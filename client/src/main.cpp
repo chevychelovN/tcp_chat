@@ -30,7 +30,7 @@ int main(int argc, char* argv[]) {
             throw std::invalid_argument("ERROR: <INCORRECT PARAMETERS NUMBER>");
         } else {
             Client client;
-            BOOST_LOG_TRIVIAL(debug) << "Client connects to default port (1234)";
+            BOOST_LOG_TRIVIAL(warning) << "Client connects to default port (1234)";
             client.run();
         }
     } catch (std::exception& error) {
